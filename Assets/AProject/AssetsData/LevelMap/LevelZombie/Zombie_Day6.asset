@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2d66997a21bc44bbe4a6b3248f38a3, type: 3}
+  m_Name: Zombie_Day6
+  m_EditorClassIdentifier: 
+  levelID: 6
+  levelName: Day 6
+  zombies:
+  - zombieTypeData: {fileID: 11400000, guid: 38e419a403a9e444994bd16e20da3202, type: 2}
+    count: 70

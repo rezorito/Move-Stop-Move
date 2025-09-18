@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcc4ce1a38de20499171e5a9b532d7f, type: 3}
+  m_Name: Knife
+  m_EditorClassIdentifier: 
+  id: KnifeID
+  itemName: Knife
+  itemType: 0
+  highHair: 0
+  modelPrefab: {fileID: 3910288163859023926, guid: 54f085787bb73914f9240f244b1b86e9, type: 3}
+  outfitMaterial: {fileID: 0}
+  icon: {fileID: 21300000, guid: d070509088048e947aad3df6c25da2d6, type: 3}
+  price: 100
+  materials: []
+  listSkinWeapon:
+  - skinName: Knife_SkinCustom
+    spriteSkin: {fileID: 21300000, guid: 144b294e92eb78b42869af4d2bf4994d, type: 3}
+    isLock: 0
+    isCustom: 1
+    customMaterial:
+    - {fileID: 2100000, guid: 52d65bc4e735cc84688afb823c46c761, type: 2}
+    - {fileID: 2100000, guid: 9b02b118b1b177d4fa030f2c488a2182, type: 2}
+    skinMaterial: {fileID: 0}
+  - skinName: Knife_Skin1
+    spriteSkin: {fileID: 21300000, guid: 7def431845018274bb31bff65c0dccfb, type: 3}
+    isLock: 0
+    isCustom: 0
+    customMaterial:
+    - {fileID: 2100000, guid: 8cea938bf21af7349be1cec036b805af, type: 2}
+    - {fileID: 2100000, guid: 8cea938bf21af7349be1cec036b805af, type: 2}
+    skinMaterial: {fileID: 2100000, guid: bb45f70042b6bfa42b12524c0053bf31, type: 2}
+  - skinName: Knife_Skin2
+    spriteSkin: {fileID: 21300000, guid: 05302ff817ff94241923cedbb331d614, type: 3}
+    isLock: 1
+    isCustom: 0
+    customMaterial:
+    - {fileID: 2100000, guid: 8cea938bf21af7349be1cec036b805af, type: 2}
+    - {fileID: 2100000, guid: 8cea938bf21af7349be1cec036b805af, type: 2}
+    skinMaterial: {fileID: 2100000, guid: 9964105a129fd8043921667862033fd3, type: 2}
+  skinWeaponChosse: 1
+  atributes:
+    atributeType: 2
+    AtributeName: AttackSpeed
+    valueString: 5%
+    value: 0.05
+  attackRotation: 0
+  subItems: []
+  skinMaterial: {fileID: 0}

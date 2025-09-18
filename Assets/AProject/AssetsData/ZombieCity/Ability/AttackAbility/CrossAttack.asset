@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b2aee6d16703343b13d10814b95de7, type: 3}
+  m_Name: CrossAttack
+  m_EditorClassIdentifier: 
+  abilityID: CrossAttackID
+  abilityName: Cross Attack
+  abilityType: 0
+  abilitySprite: {fileID: 21300000, guid: b7b9fd76034527e4480f5656383f8c97, type: 3}
+  spawnWeaponLeft: {fileID: 0}
+  spawnWeaponRight: {fileID: 0}

@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcc4ce1a38de20499171e5a9b532d7f, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  id: axeID
+  itemName: Axe
+  itemType: 0
+  highHair: 0
+  modelPrefab: {fileID: 6989726811476521509, guid: 82fa032a0212afa499faa5c47e3ef3c8, type: 3}
+  outfitMaterial: {fileID: 0}
+  icon: {fileID: 21300000, guid: ebdcbaeda8bd26142a6baab22dae83e0, type: 3}
+  price: 800
+  materials:
+  - {fileID: 2100000, guid: 182c536fbb8f34947bd47adfcd52a51c, type: 2}
+  - {fileID: 2100000, guid: e87dcb8f8c50b3d4b9e50dc5dff3482d, type: 2}
+  - {fileID: 2100000, guid: b2bff26803d03434b886f8c45348d46d, type: 2}
+  - {fileID: 2100000, guid: 7ad0539661524de4da94ebbc6ffe9643, type: 2}
+  listSkinWeapon:
+  - skinName: Axe_SkinCustom
+    spriteSkin: {fileID: 21300000, guid: 57de26831dab6af4db61c25558e25529, type: 3}
+    isLock: 0
+    isCustom: 1
+    customMaterial:
+    - {fileID: 2100000, guid: 94ed4adf7881a37448d38699325004c0, type: 2}
+    - {fileID: 2100000, guid: 6d0090783d477bb44ac6e4aee1297d64, type: 2}
+    skinMaterial: {fileID: 0}
+  - skinName: Axe_Skin1
+    spriteSkin: {fileID: 21300000, guid: dfd4130ec3127664099df266def001b1, type: 3}
+    isLock: 0
+    isCustom: 0
+    customMaterial: []
+    skinMaterial: {fileID: 2100000, guid: 182c536fbb8f34947bd47adfcd52a51c, type: 2}
+  - skinName: Axe_Skin2
+    spriteSkin: {fileID: 21300000, guid: a0ee4a06d0742ed4486e677c7d15e5e1, type: 3}
+    isLock: 1
+    isCustom: 0
+    customMaterial: []
+    skinMaterial: {fileID: 2100000, guid: e87dcb8f8c50b3d4b9e50dc5dff3482d, type: 2}
+  - skinName: Axe_Skin3
+    spriteSkin: {fileID: 21300000, guid: 116deb151db20f54999bb7565c214b65, type: 3}
+    isLock: 1
+    isCustom: 0
+    customMaterial: []
+    skinMaterial: {fileID: 2100000, guid: b2bff26803d03434b886f8c45348d46d, type: 2}
+  - skinName: Axe_Skin4
+    spriteSkin: {fileID: 21300000, guid: 13cf170dfab6c8245abe607af0a7b637, type: 3}
+    isLock: 1
+    isCustom: 0
+    customMaterial: []
+    skinMaterial: {fileID: 2100000, guid: 7ad0539661524de4da94ebbc6ffe9643, type: 2}
+  skinWeaponChosse: 1
+  atributes:
+    atributeType: 0
+    AtributeName: Range
+    valueString: 15
+    value: 15
+  attackRotation: 1
+  subItems: []
+  skinMaterial: {fileID: 0}

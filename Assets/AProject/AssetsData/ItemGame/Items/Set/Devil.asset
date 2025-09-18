@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcc4ce1a38de20499171e5a9b532d7f, type: 3}
+  m_Name: Devil
+  m_EditorClassIdentifier: 
+  id: DevilID
+  itemName: Devil
+  itemType: 4
+  highHair: 0
+  modelPrefab: {fileID: 0}
+  outfitMaterial: {fileID: 0}
+  icon: {fileID: 21300000, guid: 591bf6bd34c3a3c4e9143ba55a6c7d7b, type: 3}
+  price: 2000
+  materials: []
+  atributes:
+    AtributeName: Range
+    valueString: 8%
+    value: 0.08
+  subItems:
+  - {fileID: 11400000, guid: cf8bb15a1c701764ebed30b4f1a0ffb7, type: 2}
+  - {fileID: 11400000, guid: 58735cd9ed4c42e45ac61b8fd6da4e0f, type: 2}
+  - {fileID: 11400000, guid: c6c1e937a83509d44bbf2239bf80c7c2, type: 2}
+  skinMaterial: {fileID: 2100000, guid: 4d050346984f45d43a8550f738376517, type: 2}

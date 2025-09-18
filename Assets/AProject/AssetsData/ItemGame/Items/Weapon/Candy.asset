@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcc4ce1a38de20499171e5a9b532d7f, type: 3}
+  m_Name: Candy
+  m_EditorClassIdentifier: 
+  id: CandyID
+  itemName: Candy
+  itemType: 0
+  highHair: 0
+  modelPrefab: {fileID: 3729031035511913457, guid: d7d4f533dcc304440bf3e896fc402165, type: 3}
+  outfitMaterial: {fileID: 0}
+  icon: {fileID: 21300000, guid: ee9b5ee161c699c4a8ff09419ad4b781, type: 3}
+  price: 500
+  materials: []
+  listSkinWeapon:
+  - skinName: Candy_SkinCustom
+    spriteSkin: {fileID: 21300000, guid: 547eaf286d2527f48a62dd259c9fabd9, type: 3}
+    isLock: 0
+    isCustom: 1
+    customMaterial:
+    - {fileID: 2100000, guid: a15cbf390021319468911eaa4a161dfc, type: 2}
+    - {fileID: 2100000, guid: c051afe391284004e8ef4e3bf059dae5, type: 2}
+    - {fileID: 2100000, guid: 354e3e8d113608847b9b191241f74d23, type: 2}
+    skinMaterial: {fileID: 0}
+  - skinName: Candy_Skin1
+    spriteSkin: {fileID: 21300000, guid: 497f7d2dc679b0e4a8c09879808c99a7, type: 3}
+    isLock: 0
+    isCustom: 0
+    customMaterial: []
+    skinMaterial: {fileID: 2100000, guid: 0ad7604518210314883331e80e6ea963, type: 2}
+  - skinName: Candy_Skin2
+    spriteSkin: {fileID: 21300000, guid: dedfe618f7bd48e4895d075920a85b3e, type: 3}
+    isLock: 1
+    isCustom: 0
+    customMaterial: []
+    skinMaterial: {fileID: 2100000, guid: 99e64a32a9e8d9b4ebb4f440bdb2ebad, type: 2}
+  - skinName: Candy_Skin3
+    spriteSkin: {fileID: 21300000, guid: bb30380b467167441ba4b412fedd49ce, type: 3}
+    isLock: 1
+    isCustom: 0
+    customMaterial: []
+    skinMaterial: {fileID: 2100000, guid: 32279f0372d9ff64b95b66ff4af42291, type: 2}
+  - skinName: Candy_Skin4
+    spriteSkin: {fileID: 21300000, guid: db8f80d4177939e4ca2b2c46a72e10bc, type: 3}
+    isLock: 1
+    isCustom: 0
+    customMaterial: []
+    skinMaterial: {fileID: 2100000, guid: 1f9015070308da947a0a9fd97a58c13c, type: 2}
+  skinWeaponChosse: 1
+  atributes:
+    atributeType: 0
+    AtributeName: Range
+    valueString: 3
+    value: 3
+  attackRotation: 1
+  subItems: []
+  skinMaterial: {fileID: 0}

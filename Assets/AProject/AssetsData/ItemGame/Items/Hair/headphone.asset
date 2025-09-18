@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcc4ce1a38de20499171e5a9b532d7f, type: 3}
+  m_Name: headphone
+  m_EditorClassIdentifier: 
+  id: HeadPhoneID
+  itemName: headphone
+  itemType: 1
+  highHair: 0
+  modelPrefab: {fileID: 5909576816721576951, guid: a7eab5aa40f4d8a4f8121271d9cf85c3, type: 3}
+  outfitMaterial: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8d6f3924025ae284b99158b1a260f33f, type: 3}
+  price: 500
+  materials: []
+  atributes:
+    AtributeName: Range
+    valueString: 5
+    value: 0.05
+  subItems: []
+  skinMaterial: {fileID: 0}
