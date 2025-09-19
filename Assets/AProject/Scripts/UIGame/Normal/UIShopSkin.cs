@@ -148,7 +148,6 @@ public class UIShopSkin : MonoBehaviour
     }
 
     private bool BtnOpenShopOnClick(Button btnClick) {
-        AudioManager.Ins.PlaySound_ButtonClick();
         if(btn_previousShop != null) {
             if (btnClick == btn_previousShop) return false;
             Image img_btnOnClick = btnClick.GetComponent<Image>();

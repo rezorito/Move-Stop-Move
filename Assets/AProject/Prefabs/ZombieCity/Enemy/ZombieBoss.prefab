@@ -1618,8 +1618,8 @@ MonoBehaviour:
   soundEnemyController: {fileID: 3157652617173087390}
   int_maxHealth: 0
   int_healthCurrent: 0
-  int_minSpeed: 0.07
-  int_maxSpeed: 0.12
+  int_minSpeed: 0.06
+  int_maxSpeed: 0.14
   int_maxDistance: 0.04
   isInit: 0
 --- !u!136 &-1419925664140381629

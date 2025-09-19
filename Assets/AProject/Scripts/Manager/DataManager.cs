@@ -87,12 +87,12 @@ public class DataManager : MonoBehaviour {
     void InitData() {
         gameSave = new GameSave();
         gameSave.isNew = false;
+        gameSave.list_WeaponIDOwn.Add("HammerID");
+        gameSave.str_currentWeaponID = "HammerID";
         foreach(ItemBase item in itemDatabase.allItems.Where(item => item.itemType == ItemType.Weapon).ToList()) {
             gameSave.list_SkinWeaponID.Add(item.listSkinWeapon[0].skinName);
             gameSave.list_SkinWeaponID.Add(item.listSkinWeapon[1].skinName);
         }
-        gameSave.list_WeaponIDOwn.Add("HammerID");
-        gameSave.str_currentWeaponID = "HammerID";
         gameSave.int_skinChooseWeapon = 1;
         gameSave.levelNormal = gameSave.levelZombie = 1;
         gameSave.levelStartNormal = gameSave.levelStartZombie = 1;

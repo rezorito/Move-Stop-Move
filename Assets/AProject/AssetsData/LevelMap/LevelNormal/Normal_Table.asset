@@ -15,4 +15,4 @@ MonoBehaviour:
   levelID: 1
   levelName: Table
   imgLevel: {fileID: 21300000, guid: 4e85726d07ebc5a42bb2f38fa15a9b3e, type: 3}
-  countEnenmy: 5
+  countEnenmy: 50

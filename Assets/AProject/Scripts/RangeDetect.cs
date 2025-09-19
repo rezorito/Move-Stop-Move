@@ -5,7 +5,6 @@ using UnityEngine;
 public class RangeDetect : MonoBehaviour
 {
     [Header("------------Ref------------")]
-    public AtributePlayerZombie atributePlayerZombie;
     public CameraPos cameraPos;
     public Vector3 scaleDefault = new Vector3(0f, 0f, 0f);
     public Renderer rangeDetectRenderer;
@@ -59,13 +58,14 @@ public class RangeDetect : MonoBehaviour
                 flt_detectionRadius = Self.transform.localScale.x / flt_scaleWithPlayer + 0.075f;
             }
         }
-        if (isPlayer)
-        {
-            rangeDetectRenderer.enabled = true;
-            if (GameManager.instance.IsGameStateEnd())
-            {
-                if (trans_previousClosestEnemy != null)
-                {
+        if (isPlayer) {
+            if (Player.instance.IsPlayerStateRevive() || Player.instance.IsPlayerStateDie()) {
+                rangeDetectRenderer.enabled = false;
+            } else {
+                rangeDetectRenderer.enabled = true;
+            }
+            if (GameManager.instance.IsGameStateEnd()) {
+                if (trans_previousClosestEnemy != null) {
                     var oldTarget = trans_previousClosestEnemy.Find("Target");
                     if (oldTarget) oldTarget.gameObject.SetActive(false);
                 }

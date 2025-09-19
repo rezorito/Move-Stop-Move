@@ -3,7 +3,7 @@ using UnityEngine;
 public class HomeGameState : IGameStateBase
 {
     public void Enter(GameManager gameManager) {
-        if (gameManager.currentMode == GameMode.Normal) {
+         if (gameManager.currentMode == GameMode.Normal) {
             AudioManager.Ins.PlayMusic(SoundData.SoundName.Music_MainNormal);
             MapManager.instance.Init();
             SpawnManager.Instance.InitSpawn();

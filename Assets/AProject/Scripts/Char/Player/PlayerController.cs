@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour {
     [Header("----------------Common----------------")]
@@ -24,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     public float flt_delayAttack = 0.7f;
     public float flt_timeToAttack = 0;
     public bool isAttack = true;
+    public int rank = 0;
     public bool isMove = true;     //kiểm tra xem được di chuyển ko (khi attack)
     public string str_killerName = "";
 
@@ -299,6 +299,7 @@ public class PlayerController : MonoBehaviour {
             if (other.CompareTag("Weapon")) {
                 if (other.gameObject == skinPlayer.obj_weaponAttack) return;
                 soundPlayerController.PlaySound(SoundData.SoundName.WeaponHit);
+                if (SpawnManager.Instance != null) rank = SpawnManager.Instance.getAmountEnemyRemaining() + 1;
                 str_killerName = other.GetComponent<Weapon>().obj_parent.GetComponent<EnemyAI>().str_nameSelf;
                 if(!revivePlayer.isRevivePopup) {
                     setupPlayerDie();

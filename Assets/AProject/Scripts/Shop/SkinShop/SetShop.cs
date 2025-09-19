@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
-using static UnityEditor.Progress;
 using System.Linq;
 
 public class SetShop : MonoBehaviour

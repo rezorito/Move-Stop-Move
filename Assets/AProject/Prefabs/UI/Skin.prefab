@@ -2212,7 +2212,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 398177675369076626}
-  - component: {fileID: 7860407085472877199}
   m_Layer: 5
   m_Name: DetailOwnerItem
   m_TagString: Untagged
@@ -2242,22 +2241,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 38, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7860407085472877199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6939927711474283913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb0c91481a08f0847ae037a933f92e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnBuy: {fileID: 5551161621301379614}
-  btnEquip: {fileID: 3940674282789784210}
-  btnUnequip: {fileID: 6616326846569938312}
-  btnFreeOne: {fileID: 3333267824035450234}
 --- !u!1 &6995784913845461162
 GameObject:
   m_ObjectHideFlags: 0
@@ -2503,7 +2486,6 @@ GameObject:
   - component: {fileID: 4821656842211896212}
   - component: {fileID: 8645947724414351711}
   - component: {fileID: 2417897163351135366}
-  - component: {fileID: 5119137054747248440}
   m_Layer: 5
   m_Name: GroupBtnClo
   m_TagString: Untagged
@@ -2569,23 +2551,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &5119137054747248440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7967634424733574038}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 315694413c5bd0747b9f8f5cb8e3e37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allButtons:
-  - {fileID: 226336441419203657}
-  - {fileID: 1563570838052894720}
-  - {fileID: 2481405634459370074}
-  - {fileID: 7928132547851361264}
 --- !u!1 &8063792454954520840
 GameObject:
   m_ObjectHideFlags: 0

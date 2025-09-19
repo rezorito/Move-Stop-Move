@@ -33,10 +33,12 @@ public class UIInPlay : MonoBehaviour
     public void Init() {
         gameObject.SetActive(true);
         if(!isInit) {
+            isInit = true;
             txt_amountEnemyRemain.text = "Alive : " + SpawnManager.Instance.getAmountEnemyRemaining();
             SetupButton();
+            SetupUIBtnSound();
+            SetupUIBtnShake();
         }
-        isInit = true;
     }
 
     public void SetupButton() {
@@ -54,12 +56,14 @@ public class UIInPlay : MonoBehaviour
             obj_popupPause.SetActive(true);
         });
         btn_soundAction.onClick.AddListener(() => {
+            AudioManager.Ins.UpdateVolumnSoundAMusic();
+            SetupUIBtnSound();
             AudioManager.Ins.PlaySound_ButtonClick();
-            GameManager.instance.ReLoadScene();
         });
         btn_shakeAction.onClick.AddListener(() => {
+            AudioManager.Ins.UpdateVibration();
+            SetupUIBtnShake();
             AudioManager.Ins.PlaySound_ButtonClick();
-            GameManager.instance.ReLoadScene();
         });
         btn_goHome.onClick.AddListener(() => {
             AudioManager.Ins.PlaySound_ButtonClick();
@@ -83,23 +87,28 @@ public class UIInPlay : MonoBehaviour
         txt_amountEnemyRemain.text = "Alive : " + SpawnManager.Instance.getAmountEnemyRemaining();
     }
 
-    public void SetupBtnSound() {
-        if(DataManager.Ins.gameSave.soundVolume == 0) {
-            obj_soundOn.SetActive(false);
-            obj_soundOff.SetActive(true);
-        } else {
+    public void SetupUIBtnSound() {
+        if (AudioManager.Ins.IsStatusSoundAMusic()) {
+            img_btnSound.sprite = sprite_soundOn;
             obj_soundOn.SetActive(true);
             obj_soundOff.SetActive(false);
         }
-    }
-    public void SetupBtnShake() {
-        if (DataManager.Ins.gameSave.vibrateAmount == 0) {
-            obj_shakeOn.SetActive(false);
-            obj_ShakeOff.SetActive(true);
-        }
         else {
+            img_btnSound.sprite = sprite_soundOff;
+            obj_soundOn.SetActive(false);
+            obj_soundOff.SetActive(true);
+        }
+    }
+    public void SetupUIBtnShake() {
+        if (AudioManager.Ins.IsStatusVibration()) {
+            img_btnShake.sprite = sprite_shakeOn;
             obj_shakeOn.SetActive(true);
             obj_ShakeOff.SetActive(false);
+        }
+        else {
+            img_btnShake.sprite = sprite_shakeOff;
+            obj_shakeOn.SetActive(false);
+            obj_ShakeOff.SetActive(true);
         }
     }
 }

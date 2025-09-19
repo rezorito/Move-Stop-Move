@@ -844,6 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj_MapParent: {fileID: 929750503}
+  obj_MapTutPref: {fileID: 5935844867630014652, guid: 512ece52aa318ce4895687a1a9b1f405, type: 3}
   obj_Map1Pref: {fileID: 9200192978813891260, guid: 089577dc4cfbd904c8ca2fdec655880d, type: 3}
   obj_Map2Pref: {fileID: 5040801206413387754, guid: 1b6da1d9c083a1440a9fc6b4224d214d, type: 3}
   lightMain: {fileID: 304418247}
@@ -1225,6 +1226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1407641222}
   - component: {fileID: 1407641223}
+  - component: {fileID: 1407641224}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -1269,6 +1271,22 @@ MonoBehaviour:
   int_enemiesSpawned: 0
   int_enemiesDead: 0
   flt_timeDelaySpawn: 2
+--- !u!114 &1407641224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407641221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cf12fe30865c04ba3a32883ae2ed85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSaturation: 0.6
+  minBrightness: 0.6
+  minColorDifference: 0.3
+  hueStep: 15
 --- !u!1 &1417916265
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,7 +2318,7 @@ GameObject:
   - component: {fileID: 5493603689884334970}
   - component: {fileID: 8621336958740654229}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3959,7 +3977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 65.1, y: 0}
+  m_AnchoredPosition: {x: 65.100006, y: 0}
   m_SizeDelta: {x: 360, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2593797115398235935
@@ -4773,7 +4791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a66a28112162b46ba907ab130851e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atributePlayerZombie: {fileID: 0}
   cameraPos: {fileID: 0}
   scaleDefault: {x: 0, y: 0, z: 0}
   rangeDetectRenderer: {fileID: 8832869106929779729}
@@ -4857,7 +4874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 482.70963, y: 595.8161}
+  m_AnchoredPosition: {x: 482.7096, y: 595.8161}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3930627067237372607
@@ -5980,7 +5997,7 @@ GameObject:
   - component: {fileID: 3568391169181685096}
   - component: {fileID: 570527187316866637}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonAds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6487,7 +6504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -18, y: 1}
+  m_AnchoredPosition: {x: -18.000061, y: 1}
   m_SizeDelta: {x: -980, y: -1820}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6642918623509716777
@@ -6663,7 +6680,7 @@ GameObject:
   - component: {fileID: 1722733671333184135}
   - component: {fileID: 1873049815294857552}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonShake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7319,6 +7336,15 @@ MonoBehaviour:
   btn_showShopSkin: {fileID: 2808035391846738060}
   anim_GroupUIRight: {fileID: 4592779920123477146}
   txt_coinOwn: {fileID: 8159978824944086075}
+  btn_ads: {fileID: 570527187316866637}
+  btn_shakeAction: {fileID: 1873049815294857552}
+  img_btnShake: {fileID: 1722733671333184135}
+  sprite_shakeOn: {fileID: 21300000, guid: 5232207edccbbc7469ed1397560f7da2, type: 3}
+  sprite_shakeOff: {fileID: 21300000, guid: 2b37827efe2945d43afd6094e452d539, type: 3}
+  btn_soundAction: {fileID: 8621336958740654229}
+  img_btnSound: {fileID: 5493603689884334970}
+  sprite_SoundOn: {fileID: 21300000, guid: 71cc73ceea147414092ff20146022264, type: 3}
+  sprite_SoundOff: {fileID: 21300000, guid: e39947e1f90484d45b5f9445bf3d3832, type: 3}
   btn_changeZombieMode: {fileID: 8093744731664336508}
   txt_lvZombieMode: {fileID: 8715154227405175011}
   btn_play: {fileID: 5386252929936958711}
@@ -8398,6 +8424,7 @@ MonoBehaviour:
   flt_delayAttack: 1
   flt_timeToAttack: 0
   isAttack: 1
+  rank: 0
   isMove: 1
   str_killerName: 
   cameraMain: {fileID: 2015091745}

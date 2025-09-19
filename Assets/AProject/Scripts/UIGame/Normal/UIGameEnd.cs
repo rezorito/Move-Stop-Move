@@ -88,7 +88,7 @@ public class UIGameEnd : MonoBehaviour
         if (Player.instance.IsPlayerStateDie()) {
             obj_popupGameOver.SetActive(true);
             txt_killerName.text = Player.instance.playerController.str_killerName;
-            txt_rankPlayer.text = "#" + (SpawnManager.Instance.getAmountEnemyRemaining() + 1);
+            txt_rankPlayer.text = "#" + Player.instance.playerController.rank;
         }
         if (Player.instance.IsPlayerStateWin()) {
             obj_popupWin.SetActive(true);
@@ -112,7 +112,6 @@ public class UIGameEnd : MonoBehaviour
         }
         rectTrans_processPlayMap.sizeDelta = size;
         txt_coinRevice.text = Player.instance.playerController.systemGameplayPlayer.getCoinReceive().ToString();
-        Debug.Log(Player.instance.playerController.systemGameplayPlayer.getCoinReceive());
         StartCoroutine(ShowBtnGoHome());
     }
 

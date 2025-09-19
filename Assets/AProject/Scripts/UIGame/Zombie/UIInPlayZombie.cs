@@ -13,6 +13,18 @@ public class UIInPlayZombie : MonoBehaviour
     public GameObject obj_popupPause;
     public GameObject obj_emptyAbility;
     public Image img_abilityUsed;
+    public Button btn_soundAction;
+    public Image img_btnSound;
+    public Sprite sprite_soundOn;
+    public Sprite sprite_soundOff;
+    public GameObject obj_soundOn;
+    public GameObject obj_soundOff;
+    public Button btn_shakeAction;
+    public Image img_btnShake;
+    public Sprite sprite_shakeOn;
+    public Sprite sprite_shakeOff;
+    public GameObject obj_shakeOn;
+    public GameObject obj_ShakeOff;
     public Button btn_goHome;
     public Button btn_continue;
 
@@ -25,6 +37,9 @@ public class UIInPlayZombie : MonoBehaviour
         if (!isInit) {
             isInit = true;
             SetupButton();
+            SetupAbilitySelected();
+            SetupUIBtnSound();
+            SetupUIBtnShake();
         }
         txt_countDaySurvival.text = "Day " + DataManager.Ins.gameSave.levelZombie;
         txt_amountEnemyRemain.text = SpawnManager.Instance.getAmountEnemyRemaining().ToString();
@@ -32,15 +47,27 @@ public class UIInPlayZombie : MonoBehaviour
 
     public void SetupButton() {
         btn_pauseGame.onClick.RemoveAllListeners();
+        btn_soundAction.onClick.RemoveAllListeners();
+        btn_shakeAction.onClick.RemoveAllListeners();
         btn_goHome.onClick.RemoveAllListeners();
         btn_continue.onClick.RemoveAllListeners();
 
         btn_pauseGame.onClick.AddListener(() => {
             AudioManager.Ins.PlaySound_ButtonClick();
-            obj_emptyAbility.SetActive(true);
             GameManager.instance.ChangeStatePauseGame();
             btn_pauseGame.gameObject.SetActive(false);
+            SetupAbilitySelected();
             obj_popupPause.SetActive(true);
+        });
+        btn_soundAction.onClick.AddListener(() => {
+            AudioManager.Ins.UpdateVolumnSoundAMusic();
+            SetupUIBtnSound();
+            AudioManager.Ins.PlaySound_ButtonClick();
+        });
+        btn_shakeAction.onClick.AddListener(() => {
+            AudioManager.Ins.UpdateVibration();
+            SetupUIBtnShake();
+            AudioManager.Ins.PlaySound_ButtonClick();
         });
         btn_goHome.onClick.AddListener(() => {
             AudioManager.Ins.PlaySound_ButtonClick();
@@ -60,5 +87,41 @@ public class UIInPlayZombie : MonoBehaviour
 
     void Update() {
         txt_amountEnemyRemain.text = SpawnManagerZBCT.instance.getAmountEnemyRemaining().ToString();
+    }
+
+    public void SetupAbilitySelected() {
+        AbilityBase ability = Player.instance.playerController.abilitySelected;
+        Debug.Log(ability);
+        if (ability != null) {
+            img_abilityUsed.enabled = true;
+            img_abilityUsed.sprite = ability.abilitySprite;
+        } else {
+            obj_emptyAbility.SetActive(true);
+        }
+    }
+
+    public void SetupUIBtnSound() {
+        if (AudioManager.Ins.IsStatusSoundAMusic()) {
+            img_btnSound.sprite = sprite_soundOn;
+            obj_soundOn.SetActive(true);
+            obj_soundOff.SetActive(false);
+        }
+        else {
+            img_btnSound.sprite = sprite_soundOff;
+            obj_soundOn.SetActive(false);
+            obj_soundOff.SetActive(true);
+        }
+    }
+    public void SetupUIBtnShake() {
+        if (AudioManager.Ins.IsStatusVibration()) {
+            img_btnShake.sprite = sprite_shakeOn;
+            obj_shakeOn.SetActive(true);
+            obj_ShakeOff.SetActive(false);
+        }
+        else {
+            img_btnShake.sprite = sprite_shakeOff;
+            obj_shakeOn.SetActive(false);
+            obj_ShakeOff.SetActive(true);
+        }
     }
 }

@@ -1,9 +1,36 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4' // hoặc phiên bản bạn đang dùng
+        classpath 'com.google.gms:google-services:4.3.15' // 👈 chuyển dòng này vào đây
+    }
+}
 apply plugin: 'com.android.library'
 **APPLY_PLUGINS**
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
+    implementation 'androidx.recyclerview:recyclerview:1.2.1' // Packages/com.applovin.mediation.adapters.mintegral.android/Editor/Dependencies.xml:9
+    implementation 'com.android.support:customtabs:28.+' // Packages/com.applovin.mediation.adapters.inmobi.android/Editor/Dependencies.xml:7
+    implementation 'com.android.support:recyclerview-v7:28.+' // Packages/com.applovin.mediation.adapters.inmobi.android/Editor/Dependencies.xml:6
+    implementation 'com.applovin.mediation:bytedance-adapter:7.6.0.2.0' // Packages/com.applovin.mediation.adapters.bytedance.android/Editor/Dependencies.xml:8
+    implementation 'com.applovin.mediation:chartboost-adapter:9.9.3.0' // Packages/com.applovin.mediation.adapters.chartboost.android/Editor/Dependencies.xml:8
+    implementation 'com.applovin.mediation:facebook-adapter:[6.20.0.0]' // Packages/com.applovin.mediation.adapters.facebook.android/Editor/Dependencies.xml:7
+    implementation 'com.applovin.mediation:fyber-adapter:8.3.8.0' // Packages/com.applovin.mediation.adapters.fyber.android/Editor/Dependencies.xml:4
+    implementation 'com.applovin.mediation:google-adapter:[24.6.0.0]' // Packages/com.applovin.mediation.adapters.google.android/Editor/Dependencies.xml:4
+    implementation 'com.applovin.mediation:google-ad-manager-adapter:[24.6.0.0]' // Packages/com.applovin.mediation.adapters.googleadmanager.android/Editor/Dependencies.xml:4
+    implementation 'com.applovin.mediation:inmobi-adapter:10.8.7.0' // Packages/com.applovin.mediation.adapters.inmobi.android/Editor/Dependencies.xml:4
+    implementation 'com.applovin.mediation:ironsource-adapter:8.11.1.0.0' // Packages/com.applovin.mediation.adapters.ironsource.android/Editor/Dependencies.xml:4
+    implementation 'com.applovin.mediation:mintegral-adapter:16.9.91.0' // Packages/com.applovin.mediation.adapters.mintegral.android/Editor/Dependencies.xml:8
+    implementation 'com.applovin.mediation:unityads-adapter:4.16.1.0' // Packages/com.applovin.mediation.adapters.unityads.android/Editor/Dependencies.xml:4
+    implementation 'com.applovin.mediation:vungle-adapter:7.5.1.0' // Packages/com.applovin.mediation.adapters.vungle.android/Editor/Dependencies.xml:4
+    implementation 'com.applovin.mediation:yandex-adapter:7.15.1.0' // Packages/com.applovin.mediation.adapters.yandex.android/Editor/Dependencies.xml:4
+    implementation 'com.applovin:applovin-sdk:13.4.0' // Packages/com.applovin.mediation.ads/AppLovin/Editor/Dependencies.xml:4
+    // implementation 'com.google.android.gms:play-services-base:16.1.0' // Packages/com.applovin.mediation.adapters.chartboost.android/Editor/Dependencies.xml:9
     implementation 'com.google.android.gms:play-services-base:18.7.2' // Assets/Firebase/Editor/DatabaseDependencies.xml:17
     implementation 'com.google.firebase:firebase-analytics:23.0.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:15
     implementation 'com.google.firebase:firebase-analytics-unity:13.1.0' // Assets/Firebase/Editor/AnalyticsDependencies.xml:18
@@ -17,6 +44,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-common:22.0.0' // Assets/Firebase/Editor/AppDependencies.xml:13
     implementation 'com.google.firebase:firebase-database:22.0.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:13
     implementation 'com.google.firebase:firebase-database-unity:13.1.0' // Assets/Firebase/Editor/DatabaseDependencies.xml:22
+    implementation 'com.squareup.picasso:picasso:2.71828' // Packages/com.applovin.mediation.adapters.inmobi.android/Editor/Dependencies.xml:5
 // Android Resolver Dependencies End
 **DEPS**}
 
@@ -66,3 +94,5 @@ android {
 **IL_CPP_BUILD_SETUP**
 **SOURCE_BUILD_SETUP**
 **EXTERNAL_SOURCES**
+
+apply plugin: 'com.google.gms.google-services'   // 👈 thêm ở đây

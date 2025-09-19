@@ -26,8 +26,10 @@ public class PlayGameState : IGameStateBase {
         while (!Player.instance.IsPlayerStateDie()) {
             yield return null;
         }
-        GameManager.instance.StopCoroutine(CheckWinGame());
-        GameManager.instance.ChangeStateEndGame();
+        if (Player.instance.IsPlayerStateDie()) {
+            GameManager.instance.StopCoroutine(CheckWinGame());
+            GameManager.instance.ChangeStateEndGame();
+        }
     }
 
     public IEnumerator CheckWinGame() {
@@ -40,6 +42,8 @@ public class PlayGameState : IGameStateBase {
                 yield return null;
             }
         }
+        if (Player.instance.IsPlayerStateDie()) yield break;
+
         GameManager.instance.StopCoroutine(WaitForRevivePlayer());
         Player.instance.ChangePlayerWinState();
         GameManager.instance.ChangeStateEndGame();

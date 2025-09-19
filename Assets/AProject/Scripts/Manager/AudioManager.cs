@@ -126,4 +126,33 @@ public class AudioManager : MonoBehaviour {
         Debug.LogWarning("Don't have sound " + soundName);
         return soundDatas[0];
     }
+
+    public void UpdateVolumnSoundAMusic() {
+        if (IsStatusSoundAMusic()) {
+            DataManager.Ins.UpdateMusicVolume(0);
+            DataManager.Ins.UpdateSoundVolume(0);
+        } else {
+            DataManager.Ins.UpdateMusicVolume(1);
+            DataManager.Ins.UpdateSoundVolume(1);
+        }
+        UpdateVolume();
+    }
+
+    public bool IsStatusSoundAMusic() {
+        return DataManager.Ins.gameSave.soundVolume == 1 && DataManager.Ins.gameSave.musicVolume == 1;
+    }
+
+    public void UpdateVibration() {
+        if (IsStatusVibration()) {
+            DataManager.Ins.UpdateVibrateAmount(0);
+        }
+        else {
+            DataManager.Ins.UpdateVibrateAmount(1);
+        }
+    }
+
+    public bool IsStatusVibration() {
+        return DataManager.Ins.gameSave.vibrateAmount == 1;
+    }
+
 }

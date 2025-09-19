@@ -13,11 +13,11 @@ public class GameSave {
     public List<string> list_SkinWeaponID;
     public int int_skinChooseWeapon;
     public int amountBoosterAddSlotTemp, amountBoosterEmptySlotTemp, amountBoosterHammerBreak, amountBoosterMagnet;
-    public bool isDoneTutGameplay;
     public bool isUnlockBoosterAddSlotTemp, isUnlockBoosterEmptySlotTemp, isUnlockBoosterHammerBreak, isUnlockBoosterMagnet;
     public int int_amountShieldZombie, int_amountMaxBullet;
     public float flt_speedBonusZombie, flt_rangeBonusZombie;
     public int int_coinAtriShield, int_coinAtriSpeed, int_coinAtriRange, int_coinAtriMaxBullet;
+    public bool isDoneTutGameplay;
     public int levelNormal, levelZombie;
     public int highestScoreNormal;
     public int levelStartNormal, levelStartZombie;
@@ -60,6 +60,7 @@ public class GameSave {
         flt_rangeBonusZombie = 0;
         int_coinAtriShield = int_coinAtriMaxBullet = 1000;
         int_coinAtriSpeed = int_coinAtriRange = 500;
+        isDoneTutGameplay = false;
         levelNormal = levelZombie = 1;
         highestScoreNormal = 0;
         levelStartNormal = levelStartZombie = -1;

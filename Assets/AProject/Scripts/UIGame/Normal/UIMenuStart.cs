@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class UIMenuStart : MonoBehaviour
 {
@@ -21,7 +20,13 @@ public class UIMenuStart : MonoBehaviour
     public TextMeshProUGUI txt_coinOwn;
     public Button btn_ads;
     public Button btn_shakeAction;
+    public Image img_btnShake;
+    public Sprite sprite_shakeOn;
+    public Sprite sprite_shakeOff;
     public Button btn_soundAction;
+    public Image img_btnSound;
+    public Sprite sprite_SoundOn;
+    public Sprite sprite_SoundOff;
     public Button btn_changeZombieMode;
     public TextMeshProUGUI txt_lvZombieMode;
     public Button btn_play;
@@ -35,7 +40,9 @@ public class UIMenuStart : MonoBehaviour
         gameObject.SetActive(true);
         if(!isInit) {
             isInit = true;
-            SetupButton(); 
+            SetupButton();
+            SetupUIBtnSound();
+            SetupUIBtnShake();
         }
         LoadCoinOwn();
         txt_lvZombieMode.text = DataManager.Ins.gameSave.levelZombie.ToString();
@@ -68,10 +75,18 @@ public class UIMenuStart : MonoBehaviour
             UIControllerNormal.instance.OpenUIShopSkin();
         });
         btn_ads.onClick.AddListener(() => {
+            AudioManager.Ins.PlaySound_ButtonClick();
+            Debug.Log("Chua lam quang cao!");
         });
         btn_shakeAction.onClick.AddListener(() => {
+            AudioManager.Ins.UpdateVibration();
+            SetupUIBtnShake();
+            AudioManager.Ins.PlaySound_ButtonClick();
         });
         btn_soundAction.onClick.AddListener(() => {
+            AudioManager.Ins.UpdateVolumnSoundAMusic();
+            SetupUIBtnSound();
+            AudioManager.Ins.PlaySound_ButtonClick();
         });
         btn_changeZombieMode.onClick.AddListener(() => {
             AudioManager.Ins.PlaySound_ButtonClick();
@@ -110,5 +125,22 @@ public class UIMenuStart : MonoBehaviour
             Player.instance.playerController.skinPlayer.billboard.InitName(text);
             DataManager.Ins.SaveName(text);
         });
+    }
+
+    public void SetupUIBtnSound() {
+        if (AudioManager.Ins.IsStatusSoundAMusic()) {
+            img_btnSound.sprite = sprite_SoundOn;
+        }
+        else {
+            img_btnSound.sprite = sprite_SoundOff;
+        }
+    }
+    public void SetupUIBtnShake() {
+        if (AudioManager.Ins.IsStatusVibration()) {
+            img_btnShake.sprite = sprite_shakeOn;
+        }
+        else {
+            img_btnShake.sprite = sprite_shakeOff;
+        }
     }
 }

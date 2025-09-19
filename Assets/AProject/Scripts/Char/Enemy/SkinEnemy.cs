@@ -1,5 +1,4 @@
-﻿using Microsoft.Unity.VisualStudio.Editor;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -40,6 +39,7 @@ public class SkinEnemy : MonoBehaviour
     private List<ItemBase> list_ShieldData = new List<ItemBase>();
     private List<ItemBase> list_SetData = new List<ItemBase>();
 
+    public Color colorUsed;
     public void Awake() {
         if(GameManager.instance.currentMode == GameMode.Normal) {
             list_WeaponIns.Clear();
@@ -251,9 +251,13 @@ public class SkinEnemy : MonoBehaviour
     }
 
     public Color SetupColor() {
-        Color randomColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        colorUsed = ColorManager.instance.GetDistinctRandomColor();
+        SetupBillboardAIndicator(colorUsed);
+        return colorUsed;
+    }
+
+    public void SetupBillboardAIndicator(Color randomColor) {
         enemyIndicatorController.Init(randomColor);
         billBoard.InitColor(randomColor);
-        return randomColor;
     }
 }
