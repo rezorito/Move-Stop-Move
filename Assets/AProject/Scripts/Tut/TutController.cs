@@ -10,6 +10,8 @@ public class TutController : MonoBehaviour
     public GameObject obj_moveText;
     public GameObject obj_poolEnemy;
     public List<GameObject> list_enemyTut = new List<GameObject>();
+    public Animator anim_panelGoDark;
+
     public int int_amountEnmyTut = 0;
 
     private void Awake() {
@@ -29,5 +31,17 @@ public class TutController : MonoBehaviour
     public void SetupStartTut() {
         obj_poolEnemy.SetActive(true);
         obj_stopText.SetActive(true);
+    }
+
+    public void SetupEndTut() {
+        DataManager.Ins.gameSave.isDoneTutGameplay = true;
+        StartCoroutine(LoadSceneNext());
+    }
+
+    IEnumerator LoadSceneNext() {
+        anim_panelGoDark.SetTrigger("GoDark");
+        InvisibleJoystick.instance.TurnOffShowJoystick();
+        yield return new WaitForSeconds(1f);
+        GameManager.instance.ReLoadScene();
     }
 }

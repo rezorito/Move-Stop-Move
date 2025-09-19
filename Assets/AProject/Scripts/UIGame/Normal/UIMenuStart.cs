@@ -8,6 +8,7 @@ public class UIMenuStart : MonoBehaviour
 {
     //public UIControllerNormal uiControllerNormal;
     [Header("------------Ref------------")]
+    public Animator anim_camMain;
     public GameObject obj_playerMain;
     public GameObject obj_cameraMainPlay;
     public GameObject obj_cameraShopSkin;
@@ -93,6 +94,7 @@ public class UIMenuStart : MonoBehaviour
             GameManager.instance.LoadScene("LoadingZombieMode");
         });
         btn_play.onClick.AddListener(() => {
+            anim_camMain.SetTrigger("nani");
             AudioManager.Ins.PlaySound_ButtonClick();
             GameManager.instance.ChangeStateStartGame();
             UIControllerNormal.instance.OpenUIInPlay();

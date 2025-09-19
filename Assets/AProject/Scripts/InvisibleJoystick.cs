@@ -87,4 +87,9 @@ public class InvisibleJoystick : MonoBehaviour, IPointerDownHandler, IDragHandle
         if (rectTrans_joystickBG != null) rectTrans_joystickBG.gameObject.SetActive(false);
         if (rectTrans_joystickHandle != null) rectTrans_joystickHandle.gameObject.SetActive(false);
     }
+
+    public void TurnOffShowJoystick() {
+        rectTrans_joystickBG.gameObject.GetComponent<Image>().enabled = false;
+        rectTrans_joystickHandle.gameObject.GetComponent<Image>().enabled = false;
+    }
 }

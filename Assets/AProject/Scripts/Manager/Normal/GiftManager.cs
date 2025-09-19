@@ -16,6 +16,7 @@ public class GiftManager : MonoBehaviour
 
     private void Start()
     {
+        if (!DataManager.Ins.IsTutorialGame()) return;
         list_Gift.Clear();
         SetupSpawnGift();
         StartCoroutine(SpawnGift());

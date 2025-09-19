@@ -91,7 +91,6 @@ public class UIInPlayZombie : MonoBehaviour
 
     public void SetupAbilitySelected() {
         AbilityBase ability = Player.instance.playerController.abilitySelected;
-        Debug.Log(ability);
         if (ability != null) {
             img_abilityUsed.enabled = true;
             img_abilityUsed.sprite = ability.abilitySprite;

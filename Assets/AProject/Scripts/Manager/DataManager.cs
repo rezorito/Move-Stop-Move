@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour {
     public static DataManager Ins;
-    public bool isReset = false;
+    public bool isResetData = false;
     public bool isLoaded = false;
     public LevelDatabase levelDatabase;
     public AtributePlayerZombie atributePlayerZombie;
@@ -40,7 +40,7 @@ public class DataManager : MonoBehaviour {
         }
     }
     public void LoadData() {
-        if(isReset) PlayerPrefs.DeleteKey("GameSave");
+        if(isResetData) PlayerPrefs.DeleteKey("GameSave");
         if (isLoaded == false) {
             if (PlayerPrefs.HasKey("GameSave"))
                 gameSave = JsonUtility.FromJson<GameSave>(PlayerPrefs.GetString("GameSave"));
@@ -108,6 +108,15 @@ public class DataManager : MonoBehaviour {
     }
 
     //Load/Save Level
+    public bool IsTutorialGame() {
+        return gameSave.isDoneTutGameplay;
+    }
+
+    public void UpdateDoneTutorial() {
+        gameSave.isDoneTutGameplay = true;
+        SaveGame();
+    }
+
     public void SaveLevelNormal() {
         if(gameSave.levelNormal < gameSave.levelEndNormal) gameSave.levelNormal++;
         SaveGame();

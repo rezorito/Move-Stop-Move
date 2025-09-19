@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 public class PlayGameState : IGameStateBase {
     public void Enter(GameManager gameManager) {
-        AudioManager.Ins.PlayMusic(SoundData.SoundName.Music_BgrPlay);
         if (gameManager.currentMode == GameMode.Normal) {
             UIControllerNormal.instance.OpenUITut();
         }
-        GameManager.instance.StartCoroutine(CheckWinGame());
-        GameManager.instance.StartCoroutine(WaitForRevivePlayer());
+        if (DataManager.Ins.IsTutorialGame()) {
+            AudioManager.Ins.PlayMusic(SoundData.SoundName.Music_BgrPlay);
+            GameManager.instance.StartCoroutine(CheckWinGame());
+            GameManager.instance.StartCoroutine(WaitForRevivePlayer());
+        }
     }
     public void Update(GameManager gameManager) {
         gameManager.playerTime += Time.deltaTime;

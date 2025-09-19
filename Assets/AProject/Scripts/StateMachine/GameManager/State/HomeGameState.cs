@@ -1,9 +1,17 @@
+using DG.Tweening.Core.Easing;
+using System.Collections;
 using UnityEngine;
 
 public class HomeGameState : IGameStateBase
 {
     public void Enter(GameManager gameManager) {
-         if (gameManager.currentMode == GameMode.Normal) {
+        if (!DataManager.Ins.IsTutorialGame()) {
+            AudioManager.Ins.PlayMusic(SoundData.SoundName.Music_MainNormal);
+            MapManager.instance.Init();
+            UIControllerNormal.instance.uiMenuStart.anim_camMain.SetTrigger("nani");
+            gameManager.ChangeStateStartGame();
+            
+        } else if (gameManager.currentMode == GameMode.Normal) {
             AudioManager.Ins.PlayMusic(SoundData.SoundName.Music_MainNormal);
             MapManager.instance.Init();
             SpawnManager.Instance.InitSpawn();

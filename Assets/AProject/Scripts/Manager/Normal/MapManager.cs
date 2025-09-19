@@ -19,7 +19,12 @@ public class MapManager : MonoBehaviour
 
     public void Init() {
         //Sinh map level hiện tại
-        if (DataManager.Ins.gameSave.levelNormal == 1) {
+        if(!DataManager.Ins.IsTutorialGame()) {
+            GameObject mapTut = Instantiate(obj_MapTutPref, obj_MapParent, false);
+            lightMain.intensity = 1f;
+            mapTut.SetActive(true);
+        }
+        else if (DataManager.Ins.gameSave.levelNormal == 1) {
             GameObject map1 = Instantiate(obj_Map1Pref, obj_MapParent, false);
             lightMain.intensity = 0.75f;
             map1.SetActive(true);

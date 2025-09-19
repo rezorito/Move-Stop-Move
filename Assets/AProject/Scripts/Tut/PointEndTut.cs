@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PointEndTut : MonoBehaviour
 {
+    public TutController tutController;
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Enemy")) {
             gameObject.SetActive(false);
-            DataManager.Ins.gameSave.isDoneTutGameplay = true;
-            GameManager.instance.ReLoadScene();
+            tutController.SetupEndTut();
         }
     }
 }

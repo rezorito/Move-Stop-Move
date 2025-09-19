@@ -5593,19 +5593,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8269438838073952813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2015091746}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: nani
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5388127974685209481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5656,7 +5644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5447777894237882329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7326,6 +7314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad5adb92be94314e96b93d5749e3d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim_camMain: {fileID: 2015091746}
   obj_playerMain: {fileID: 2728000474227959563}
   obj_cameraMainPlay: {fileID: 2015091740}
   obj_cameraShopSkin: {fileID: 545902396}

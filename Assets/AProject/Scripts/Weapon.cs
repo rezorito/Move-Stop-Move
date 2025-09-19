@@ -125,24 +125,28 @@ public class Weapon : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             if (other.gameObject == obj_parent) return;
-            if (obj_parent != null) {
-                var systemGameplay = obj_parent.GetComponent<SystemGameplay>();
-                if (systemGameplay != null) {
-                    if (GameManager.instance.currentMode == GameMode.Normal) {
-                        systemGameplayParent.AddExp(other.GetComponent<SystemGameplay>().int_levelSelf + 1);
-                        systemGameplayParent.AddCoin(other.GetComponent<SystemGameplay>().int_levelSelf + 1);
-                        if (!isSpecialAttack) DisableProjectile();
+            if (DataManager.Ins.IsTutorialGame()) {
+                if (obj_parent != null) {
+                    var systemGameplay = obj_parent.GetComponent<SystemGameplay>();
+                    if (systemGameplay != null) {
+                        if (GameManager.instance.currentMode == GameMode.Normal) {
+                            systemGameplayParent.AddExp(other.GetComponent<SystemGameplay>().int_levelSelf + 1);
+                            systemGameplayParent.AddCoin(other.GetComponent<SystemGameplay>().int_levelSelf + 1);
+                            if (!isSpecialAttack) DisableProjectile();
+                        }
+                        else if (GameManager.instance.currentMode == GameMode.Zombie) {
+                            if (!isPiercing) DisableProjectile();
+                        }
                     }
-                    else if (GameManager.instance.currentMode == GameMode.Zombie) {
-                        if (!isPiercing) DisableProjectile();
+                    else {
+                        Debug.LogWarning("Parent không có SystemGameplay: " + obj_parent.name);
                     }
                 }
                 else {
-                    Debug.LogWarning("Parent không có SystemGameplay: " + obj_parent.name);
+                    Debug.LogWarning("Weapon chưa được gán parent!");
                 }
-            }
-            else {
-                Debug.LogWarning("Weapon chưa được gán parent!");
+            } else {
+                DisableProjectile();
             }
         }
     }

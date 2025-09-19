@@ -42,6 +42,7 @@ public class UIControllerZombie : MonoBehaviour
     public void OpenUITut() {
         if (uiTut == null) {
             uiTut = Instantiate(obj_UITutPrefab, this.gameObject.transform, false).gameObject.GetComponent<UITut>();
+            uiTut.transform.SetSiblingIndex(InvisibleJoystick.instance.transform.GetSiblingIndex());
         }
         uiTut.InitZombie();
     }
