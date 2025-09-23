@@ -17,6 +17,7 @@ public class HairShop : MonoBehaviour
     public ItemPrefabs itemPrefabChooseItem = null;
     private ItemPrefabs itemPrefabPrevious = null;
     private ItemBase chooseItem = null;
+    public ItemPrefabs itemEquipFirst = null;
 
     public bool isInit = false;
 
@@ -54,6 +55,8 @@ public class HairShop : MonoBehaviour
             var result = list_hairIns.FirstOrDefault(x => x.item == chooseItem);
             if (result.item != null) {
                 ActionWithItem(result.item, result.itemPrefabs);
+                itemEquipFirst = result.itemPrefabs;
+                itemEquipFirst.UIUpdateEquipedItem();
             }
         }
         else {
@@ -135,5 +138,17 @@ public class HairShop : MonoBehaviour
         itemPrefabPrevious = null;
         itemPrefabChooseItem = null;
         ResetHair();
+    }
+
+    public void UpdateEquipedItem() {
+        if (DataManager.Ins.gameSave.str_currentHairID != chooseItem.id) {
+            if (itemEquipFirst != null) itemEquipFirst.UIUpdateUnequipedItem();
+            itemEquipFirst = itemPrefabChooseItem;
+            itemEquipFirst.UIUpdateEquipedItem();
+        }
+        else {
+            itemEquipFirst = null;
+            itemPrefabChooseItem.UIUpdateUnequipedItem();
+        }
     }
 }

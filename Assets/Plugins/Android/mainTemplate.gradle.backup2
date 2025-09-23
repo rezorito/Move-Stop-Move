@@ -15,43 +15,33 @@ configurations.all {
               'androidx.startup:startup-runtime:1.1.1',
               'io.appmetrica.analytics:analytics:5.2.0',
               
-              // Kotlin versions - sử dụng version từ đoạn thứ hai (1.9.22)
-              'org.jetbrains.kotlin:kotlin-stdlib:1.9.22',
-              'org.jetbrains.kotlin:kotlin-stdlib-common:1.9.22',
-              'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22',
-              'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22',
+              // Kotlin versions
+              'org.jetbrains.kotlin:kotlin-stdlib:1.8.20',
+              'org.jetbrains.kotlin:kotlin-stdlib-common:1.8.20',
+              'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.20',
+              'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20',
               
-              // Thêm các dependency từ đoạn thứ hai
-              'androidx.activity:activity:1.6.1',
+              // AndroidX dependencies
+              'androidx.activity:activity:1.7.0',
               'androidx.annotation:annotation-experimental:1.3.0',
-              'androidx.appcompat:appcompat:1.3.1',
-              'androidx.core:core:1.6.0',
-              'androidx.fragment:fragment:1.3.6',
-              'androidx.lifecycle:lifecycle-runtime:2.3.1',
-              'androidx.webkit:webkit:1.6.0',
-              'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3',
-              'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3',
-              'com.squareup.okio:okio:3.6.0'
+              'androidx.appcompat:appcompat:1.6.1',
+              'androidx.core:core:1.10.0',
+              'androidx.fragment:fragment:1.5.7',
+              'androidx.lifecycle:lifecycle-runtime:2.6.1',
+              'androidx.webkit:webkit:1.6.1'
         
         preferProjectModules()
+        // BỎ failOnVersionConflict() để tránh lỗi circular dependency
         // failOnVersionConflict()
         
         // Thêm resolution strategy cho từng dependency
         eachDependency { details ->
             if (details.requested.group == 'androidx.webkit' && details.requested.name == 'webkit') {
-                details.useVersion '1.6.0'
-                details.because 'Compatible with AGP 7.4.2'
+                details.useVersion '1.6.1'
             }
             // Force Kotlin versions
             if (details.requested.group == 'org.jetbrains.kotlin') {
-                details.useVersion '1.9.22'
-                details.because 'Force Kotlin version to avoid conflicts'
-            }
-            if (details.requested.group == 'org.jetbrains.kotlinx') {
-                if (details.requested.name.contains('coroutines')) {
-                    details.useVersion '1.7.3'
-                    details.because 'Force coroutines version to avoid conflicts'
-                }
+                details.useVersion '1.8.20'
             }
         }
     }
@@ -60,10 +50,8 @@ configurations.all {
 dependencies {
     implementation project(':unityLibrary')
     
-    // Add these to ensure consistency - sử dụng version 1.9.22
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.22'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22'
+    // Add these to ensure consistency
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.20'
     implementation 'androidx.multidex:multidex:2.0.1'
 }
 
@@ -91,8 +79,9 @@ android {
         versionName '**VERSIONNAME**'
     }
 
+    // Sửa aaptOptions theo format mới
     aaptOptions {
-        noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(', ')
+        noCompress = ['.unity3d', '.ress', '.resource', '.obb'] + (unityStreamingAssets?.tokenize(', ') ?: [])
         ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~"
     }**SIGN**
 
@@ -102,7 +91,8 @@ android {
     }
 
     packagingOptions {
-        pickFirst '**/*.so'
+        doNotStrip '**/lib/*/lib*.so'
+        pickFirst '**/lib/*/lib*.so'
         pickFirst 'META-INF/*'
         exclude 'META-INF/*.version'
         exclude 'META-INF/proguard/*'

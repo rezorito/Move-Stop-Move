@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Firebase;
-using Firebase.Extensions;
+//using Firebase;
+//using Firebase.Extensions;
 using TMPro;
 
 public class IntroScreen : MonoBehaviour
@@ -11,25 +11,24 @@ public class IntroScreen : MonoBehaviour
     public TextMeshProUGUI statusText;
     private void Start()
     {
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
-        {
-            var dependencyStatus = task.Result;
-            if (dependencyStatus == DependencyStatus.Available)
-            {
-                Debug.Log("Firebase is ready!");
-                statusText.text = "Firebase is ready!";
-                StartCoroutine(LoadNextSceneAfterDelay()); // Chỉ load khi Firebase ok
-            }
-            else
-            {
-                Debug.LogError($"Could not resolve Firebase dependencies: {dependencyStatus}");
-                statusText.text = $"Firebase error: {dependencyStatus}";
-            }
-        });
+        //FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+        //{
+        //    var dependencyStatus = task.Result;
+        //    if (dependencyStatus == DependencyStatus.Available)
+        //    {
+        //        Debug.Log("Firebase is ready!");
+        //        statusText.text = "Firebase is ready!";
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError($"Could not resolve Firebase dependencies: {dependencyStatus}");
+        //        statusText.text = $"Firebase error: {dependencyStatus}";
+        //    }
+        //});
+        StartCoroutine(LoadNextSceneAfterDelay()); // Chỉ load khi Firebase ok
     }
 
-    private IEnumerator LoadNextSceneAfterDelay()
-    {
+    private IEnumerator LoadNextSceneAfterDelay() {
         yield return new WaitForSeconds(flt_waitTime);
         ADSManager.instance.applovinMaxManager.ShowInterstitial();
         GameManager.instance.LoadScene("MainScene");

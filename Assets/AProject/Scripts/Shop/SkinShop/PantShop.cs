@@ -17,6 +17,7 @@ public class PantShop : MonoBehaviour
     public ItemPrefabs itemPrefabChooseItem = null;
     private ItemPrefabs itemPrefabPrevious = null;
     private ItemBase chooseItem = null;
+    public ItemPrefabs itemEquipFirst = null;
 
     public bool isInit = false;
 
@@ -56,6 +57,8 @@ public class PantShop : MonoBehaviour
             var result = list_pantIns.FirstOrDefault(x => x.item == chooseItem);
             if (result.item != null) {
                 ActionWithItem(result.item, result.itemPrefabs);
+                itemEquipFirst = result.itemPrefabs;
+                itemEquipFirst.UIUpdateEquipedItem();
             }
         }
         else {
@@ -118,5 +121,16 @@ public class PantShop : MonoBehaviour
         itemPrefabPrevious = null;
         itemPrefabChooseItem = null;
         ResetPant();
+    }
+
+    public void UpdateEquipedItem() {
+        if (DataManager.Ins.gameSave.str_currentPantID == chooseItem.id) {
+            itemPrefabChooseItem.UIUpdateUnequipedItem();
+        }
+        else {
+            if (itemEquipFirst != null) itemEquipFirst.UIUpdateUnequipedItem();
+            itemEquipFirst = itemPrefabChooseItem;
+            itemEquipFirst.UIUpdateEquipedItem();
+        }
     }
 }

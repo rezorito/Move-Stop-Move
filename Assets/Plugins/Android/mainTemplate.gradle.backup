@@ -34,7 +34,7 @@ configurations.all {
               'com.squareup.okio:okio:3.6.0'
         
         preferProjectModules()
-        // failOnVersionConflict()
+        failOnVersionConflict()
         
         // Thêm resolution strategy cho từng dependency
         eachDependency { details ->
@@ -91,8 +91,9 @@ android {
         versionName '**VERSIONNAME**'
     }
 
+    // SỬA LẠI PHẦN NÀY - Sử dụng cú pháp mới cho aaptOptions
     aaptOptions {
-        noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(', ')
+        noCompress = ['.unity3d', '.ress', '.resource', '.obb'] + unityStreamingAssets.tokenize(', ')
         ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~"
     }**SIGN**
 
@@ -102,7 +103,8 @@ android {
     }
 
     packagingOptions {
-        pickFirst '**/*.so'
+        doNotStrip '**/lib/*/lib*.so'
+        pickFirst '**/lib/*/lib*.so'
         pickFirst 'META-INF/*'
         exclude 'META-INF/*.version'
         exclude 'META-INF/proguard/*'

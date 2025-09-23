@@ -7,6 +7,7 @@ public class DataManager : MonoBehaviour {
     public static DataManager Ins;
     public bool isResetData = false;
     public bool isLoaded = false;
+    public bool _isDoneTutGameplay = false;
     public LevelDatabase levelDatabase;
     public AtributePlayerZombie atributePlayerZombie;
     public ItemDatabase itemDatabase;
@@ -50,6 +51,7 @@ public class DataManager : MonoBehaviour {
             isLoaded = true;
         }
         LoadListItem();
+        gameSave.isDoneTutGameplay = _isDoneTutGameplay;
         _lastcoin = gameSave.coin;
     }
 
@@ -87,6 +89,7 @@ public class DataManager : MonoBehaviour {
     void InitData() {
         gameSave = new GameSave();
         gameSave.isNew = false;
+        gameSave.coin = 50000;
         gameSave.list_WeaponIDOwn.Add("HammerID");
         gameSave.str_currentWeaponID = "HammerID";
         foreach(ItemBase item in itemDatabase.allItems.Where(item => item.itemType == ItemType.Weapon).ToList()) {

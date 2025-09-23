@@ -116,8 +116,8 @@ public class UIGameEndZombie : MonoBehaviour
             du = DataManager.Ins.gameSave.levelZombie % 5;
         }
         else if (Player.instance.IsPlayerStateWin()) {
-            dayScope = Mathf.CeilToInt(DataManager.Ins.gameSave.levelZombie - 1) / 5;
-            du = (DataManager.Ins.gameSave.levelZombie - 1) % 5;
+            dayScope = Mathf.CeilToInt(DataManager.Ins.gameSave.levelZombie) / 5;
+            du = (DataManager.Ins.gameSave.levelZombie) % 5;
         }
         if (dayScope >= 1 && du == 0) dayScope -= 1;
         for (int i = 0; i < arrTxt_survivalDay.Length; i++) {
@@ -131,7 +131,7 @@ public class UIGameEndZombie : MonoBehaviour
             levelProcess = DataManager.Ins.gameSave.levelZombie % 5;
         }
         else if (Player.instance.IsPlayerStateWin()) {
-            levelProcess = (DataManager.Ins.gameSave.levelZombie - 1) % 5;
+            levelProcess = (DataManager.Ins.gameSave.levelZombie) % 5;
         }
         if (levelProcess == 0) levelProcess = 5;
 

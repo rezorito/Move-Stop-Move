@@ -114,6 +114,7 @@ public class UIShopSkin : MonoBehaviour
             SetupGroupBuyBtn();
         });
         btn_actionItem.onClick.AddListener(() => {
+            UpdateEquipItem();
             DataManager.Ins.UpdateEquip(chosseItem.id, chosseItem.itemType);
             AudioManager.Ins.PlaySound_ButtonClick();
             SetupGroupBuyBtn();
@@ -131,7 +132,22 @@ public class UIShopSkin : MonoBehaviour
             shieldShop.itemPrefabChooseItem.UpdateUnlockItem(chosseItem);
         }
         else if (chosseItem.itemType == ItemType.Set) {
-            //setShop.itemPrefabChooseItem.UpdateUnlockItem(chosseItem);
+            setShop.itemPrefabChooseItem.UpdateUnlockItem(chosseItem);
+        }
+    }
+
+    public void UpdateEquipItem() {
+        if (chosseItem.itemType == ItemType.Hair) {
+            hairShop.UpdateEquipedItem();
+        }
+        else if (chosseItem.itemType == ItemType.Pant) {
+            pantShop.UpdateEquipedItem();
+        }
+        else if (chosseItem.itemType == ItemType.Shield) {
+            shieldShop.UpdateEquipedItem();
+        }
+        else if (chosseItem.itemType == ItemType.Set) {
+            setShop.UpdateEquipedItem();
         }
     }
 

@@ -92,7 +92,7 @@ public class EnemyAI : MonoBehaviour {
 
     IEnumerator SetupAIEnemy() {
         while (true) {
-            if (Time.timeScale == 1) agent.isStopped = false;
+            //if (Time.timeScale == 1) agent.isStopped = false;
             if (GameManager.instance.IsGameStateHome() || isDead) {
                 if (agent != null && agent.isOnNavMesh)
                     agent.isStopped = true;
@@ -103,14 +103,15 @@ public class EnemyAI : MonoBehaviour {
             else {
                 if (agent != null && agent.isOnNavMesh && !isAttack)
                     agent.isStopped = false;
+                if (agent != null && agent.isOnNavMesh && isAttack)
+                    agent.isStopped = true;
             }
-            if (agent != null && agent.isOnNavMesh) {
+            if (agent != null && agent.isOnNavMesh && !isAttack) {  // Thêm điều kiện !isAttack
                 if (!isMoving && agent.remainingDistance <= agent.stoppingDistance) {
                     Vector3 point;
                     if (RandomPoint(this.transform.position, flt_range, out point)) {
                         Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
                         agent.SetDestination(point);
-                        isAttack = true;
                         Vector3 dir = (agent.destination - transform.position).normalized;
                         dir.y = 0;
                         if (dir != Vector3.zero) {
@@ -121,18 +122,21 @@ public class EnemyAI : MonoBehaviour {
                     }
                 }
             }
-            if (isMoving && HasReachedDestination()) {
+
+            if (isMoving && HasReachedDestination() && !isAttack) {  // Thêm điều kiện !isAttack
                 isMoving = false;
                 Debug.Log("Đã đến điểm đến!");
                 anim_Enemy.SetBool("IsIdle", true);
-                float time = 0f;
+                float time = flt_attackDelay;
                 float timeStart = 0f;
                 float timeEnd = 1.5f;
-                while (timeStart <= timeEnd) {
-                    if (time > flt_attackDelay || isAttack) {
+
+                while (timeStart <= timeEnd && !isAttack) {  // Thêm điều kiện !isAttack
+                    if (time > flt_attackDelay) {  // Bỏ điều kiện !isAttack
                         if (rangeDetect.GetEnemiesInRange().Count > 0) {
                             LookAtEnemy();
                             time = 0f;
+                            break;  // Thoát khỏi vòng lặp sau khi bắt đầu tấn công
                         }
                     }
                     time += Time.deltaTime;
@@ -175,13 +179,15 @@ public class EnemyAI : MonoBehaviour {
         if (dir != Vector3.zero) {
             transform.rotation = Quaternion.LookRotation(dir);
         }
-        agent.isStopped = true;
+        //agent.isStopped = true;
         anim_Enemy.SetBool("IsAttack", true);
+        isAttack = true;
     }
 
     public void ActiveAttack() {
         Transform trans_target = rangeDetect.ChooseTarget();
         if (trans_target == null) {
+            isAttack = false;
             anim_Enemy.SetBool("IsAttack", false);
             anim_Enemy.SetBool("IsIdle", true);
             return;
@@ -199,9 +205,9 @@ public class EnemyAI : MonoBehaviour {
         if (other.CompareTag("Weapon")) {
             if (other.gameObject == skinEnemy.obj_weaponAttack) return;
             soundEnemyAIController.PlaySound(SoundData.SoundName.WeaponHit);
+            Instantiate(bloodEffectPrefab, other.ClosestPoint(transform.position), Quaternion.identity);
             SpawnManager.Instance.EnemyDied(this);
             anim_Enemy.SetBool("IsAttack", false);
-            Instantiate(bloodEffectPrefab, other.ClosestPoint(transform.position), Quaternion.identity);
             isDead = true;
             anim_Enemy.SetBool("IsDead", true);
             col_Enemy.enabled = false;
@@ -219,8 +225,9 @@ public class EnemyAI : MonoBehaviour {
     }
 
     public void ResetAttack() {
-        obj_weaponShow.gameObject.SetActive(true);
+        this.isAttack = false;
+        Debug.Log("???");
+        obj_weaponShow.SetActive(true);
         anim_Enemy.SetBool("IsAttack", false);
-        isAttack = false;
     }
 }

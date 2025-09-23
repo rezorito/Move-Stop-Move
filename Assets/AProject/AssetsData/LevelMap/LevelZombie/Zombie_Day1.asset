@@ -16,6 +16,4 @@ MonoBehaviour:
   levelName: Day 1
   zombies:
   - zombieTypeData: {fileID: 11400000, guid: 38e419a403a9e444994bd16e20da3202, type: 2}
-    count: 49
-  - zombieTypeData: {fileID: 11400000, guid: 33ee26afceebb554d96c63f0857ea95a, type: 2}
-    count: 1
+    count: 50

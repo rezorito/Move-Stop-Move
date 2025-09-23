@@ -17,6 +17,7 @@ public class ShieldShop : MonoBehaviour
     public ItemPrefabs itemPrefabChooseItem = null;
     private ItemPrefabs itemPrefabPrevious = null;
     private ItemBase chooseItem = null;
+    public ItemPrefabs itemEquipFirst = null;
 
     public bool isInit = false;
 
@@ -54,6 +55,8 @@ public class ShieldShop : MonoBehaviour
             var result = list_shieldIns.FirstOrDefault(x => x.item == chooseItem);
             if (result.item != null) {
                 ActionWithItem(result.item, result.itemPrefabs);
+                itemEquipFirst = result.itemPrefabs;
+                itemEquipFirst.UIUpdateEquipedItem();
             }
         }
         else {
@@ -129,5 +132,15 @@ public class ShieldShop : MonoBehaviour
         itemPrefabPrevious = null;
         itemPrefabChooseItem = null;
         ResetShield();
+    }
+
+    public void UpdateEquipedItem() {
+        if(DataManager.Ins.gameSave.str_currentShieldID == chooseItem.id) {
+            itemPrefabChooseItem.UIUpdateUnequipedItem();
+        } else {
+            if (itemEquipFirst != null) itemEquipFirst.UIUpdateUnequipedItem();
+            itemEquipFirst = itemPrefabChooseItem;
+            itemEquipFirst.UIUpdateEquipedItem();
+        }
     }
 }

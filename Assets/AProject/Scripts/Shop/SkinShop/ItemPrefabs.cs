@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class ItemPrefabs : MonoBehaviour
     public GameObject obj_outBorderSelected;
     public GameObject obj_lockItem;
     public Image img_iconItem;
+    public GameObject obj_showStatusEquip;
 
     public void Init(ItemBase itemBase) {
         img_iconItem.sprite = itemBase.icon;
@@ -18,6 +20,14 @@ public class ItemPrefabs : MonoBehaviour
         else {
             obj_lockItem.SetActive(true);
         }
+    }
+
+    public void UIUpdateEquipedItem() {
+        obj_showStatusEquip.SetActive(true);
+    }
+
+    public void UIUpdateUnequipedItem() {
+        obj_showStatusEquip.SetActive(false);
     }
 
     public void UISelectItem() {

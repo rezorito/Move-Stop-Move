@@ -10,6 +10,7 @@ public class Object : MonoBehaviour
     private Material material = null;
     private void Start() {
         material = rend.materials[0];
+        setMaterialInTrigger();
     }   
 
     private void setMaterialInTrigger()

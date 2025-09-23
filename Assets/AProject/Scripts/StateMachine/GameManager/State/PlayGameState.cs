@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 public class PlayGameState : IGameStateBase {
     public void Enter(GameManager gameManager) {

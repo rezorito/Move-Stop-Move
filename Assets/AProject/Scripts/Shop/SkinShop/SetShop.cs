@@ -7,317 +7,6 @@ using System.Linq;
 
 public class SetShop : MonoBehaviour
 {
-    //public UIShopSkin uiShopSkin;
-    //public GameObject itemPrefab;
-    //public Transform contentParent;
-    //public ItemDatabase itemDatabase;
-    //public BtnSkinShopManager btnSkinShopManager;
-
-    //public Transform skinPlayer;
-    //public Transform parentHairPlayer1;
-    //public Transform parentHairPlayer2;
-    //public Transform pantPlayer;
-    //public Transform parentSwingPlayer;
-    //public Transform parentTailPlayer;
-
-    //private List<GameObject> listBtns = new List<GameObject>();
-    //private bool isPlayerSet;
-    //public Material skinStart;
-    //private GameObject btnStart = null;
-    //private GameObject btnChooseItem = null;
-    //private ItemBase chooseItem = null;
-
-    //public TextMeshProUGUI effectItem;
-
-    //public GameObject groupBuyItem;
-    //public GameObject btnBuy;
-    //public GameObject btnFreeOne;
-    //public GameObject btnEquip;
-    //public GameObject btnUnequip;
-
-    //void GenerateShop()
-    //{
-    //    listBtns.Clear();
-    //    foreach (Transform child in contentParent)
-    //    {
-    //        Destroy(child.gameObject);
-    //    }
-
-    //    foreach (var item in itemDatabase.allItems)
-    //    {
-    //        if (item.itemType != ItemType.Set) continue;
-    //        GameObject newItem = Instantiate(itemPrefab, contentParent);
-
-    //        //Chọn chosose btn ban đầu (nếu nhân vật có sẵn thì sẽ chọn vào btn đó và nếu k có sẵn cái nào thì tự chọn cái đầu tiên)
-    //        if (isPlayerSet && btnStart == null)
-    //        {
-    //            chooseItem = item;
-    //            btnStart = newItem;
-    //        }
-    //        else
-    //        {
-    //            if (item == chooseItem)
-    //            {
-    //                btnStart = newItem;
-    //            }
-    //        }
-    //        listBtns.Add(newItem);
-
-    //        if (DataManager.Ins.gameSave.list_SetIDOwn.Contains(item.id))
-    //        {
-    //            GameObject Lock = newItem.transform.Find("Lock").gameObject;
-    //            Lock.SetActive(false);
-    //        }
-
-    //        Image iconImage = newItem.transform.Find("Icon").GetComponent<Image>();
-    //        if(item.icon != null)
-    //        {
-    //            iconImage.sprite = item.icon;
-    //        }
-
-    //        Button buyButton = newItem.GetComponent<Button>();
-    //        buyButton.onClick.AddListener(() =>
-    //        {
-    //            AudioManager.Ins.PlaySound_ButtonClick();
-    //            btnChooseItem = newItem;
-    //            chooseItem = item;
-    //            UpdateUIBtn(newItem);
-    //            DetailEquip(item);
-    //            ActionWithItem(item);
-    //        });
-    //    }
-    //}
-
-    //private void UpdateUIBtn(GameObject itemBtn)
-    //{
-    //    foreach (GameObject btn in listBtns)
-    //    {
-    //        GameObject outBorder = btn.transform.Find("OutBorder").gameObject;
-    //        if (btn == itemBtn)
-    //        {
-    //            outBorder.SetActive(true);
-    //        }
-    //        else
-    //        {
-    //            outBorder.SetActive(false);
-    //        }
-    //    }
-    //}
-
-    //private void DetailEquip(ItemBase itemBtn)
-    //{
-    //    effectItem.text = "+ " + itemBtn.atributes.valueString + " " + itemBtn.atributes.AtributeName;
-    //    if (DataManager.Ins.gameSave.list_SetIDOwn.Contains(itemBtn.id))
-    //    {
-    //        groupBuyItem.SetActive(false);
-    //        if(DataManager.Ins.gameSave.str_currentSetID == itemBtn.id) {
-    //            btnEquip.SetActive(false);
-    //            btnUnequip.SetActive(true);
-    //        }
-    //        else
-    //        {
-    //            btnEquip.SetActive(true);
-    //            btnUnequip.SetActive(false);
-    //        }
-    //    } else
-    //    {
-    //        groupBuyItem.SetActive(true);
-    //        GameObject textValuePrice = btnBuy.transform.Find("ValuePrice").gameObject;
-    //        textValuePrice.GetComponent<TextMeshProUGUI>().text = itemBtn.price.ToString();
-
-    //        btnEquip.SetActive(false);
-    //        btnUnequip.SetActive(false);
-    //    }
-    //}
-
-    //void ActionWithItem(ItemBase item)
-    //{
-    //    ResetOutfitDefault();
-    //    if (item.skinMaterial != null)
-    //    {
-    //        if(skinPlayer != null)
-    //        {
-    //            Material[] mats = skinPlayer.gameObject.GetComponent<Renderer>().materials;
-    //            for (int i = 0; i < mats.Length; i++)
-    //            {
-    //                mats[i] = item.skinMaterial;
-    //            }
-    //            skinPlayer.gameObject.GetComponent<Renderer>().materials = mats;
-    //        }
-    //        if (pantPlayer != null)
-    //        {
-    //            Material[] mats = pantPlayer.gameObject.GetComponent<Renderer>().materials;
-    //            for (int i = 0; i < mats.Length; i++)
-    //            {
-    //                mats[i] = item.skinMaterial;
-    //            }
-    //            pantPlayer.gameObject.GetComponent<Renderer>().materials = mats;
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Chua co cho gan pant set");
-    //        }
-    //    }
-
-    //    foreach (ItemBase it in item.subItems)
-    //    {
-    //        if(it.itemType == ItemType.Hair)
-    //        {
-    //            if (!it.highHair)
-    //            {
-    //                if (parentHairPlayer1 != null)
-    //                {
-    //                    GameObject hairPlayer = Instantiate(it.modelPrefab, parentHairPlayer1);
-    //                }
-    //                else
-    //                {
-    //                    Debug.Log("Chua co cho gan hair set");
-    //                }
-    //            } else
-    //            {
-    //                if (parentHairPlayer2 != null)
-    //                {
-    //                    GameObject hairPlayer = Instantiate(it.modelPrefab, parentHairPlayer2);
-    //                }
-    //                else
-    //                {
-    //                    Debug.Log("Chua co cho gan hair set");
-    //                }
-    //            }
-    //        }
-    //        if (it.itemType == ItemType.Wing)
-    //        {
-    //            if(parentSwingPlayer != null)
-    //            {
-    //                GameObject wingPlayer = Instantiate(it.modelPrefab, parentSwingPlayer);
-    //            } else
-    //            {
-    //                Debug.Log("Chua co cho gan wing set");
-    //            }
-    //        }
-    //        if (it.itemType == ItemType.Tail)
-    //        {
-    //            if (parentTailPlayer != null)
-    //            {
-    //                GameObject wingPlayer = Instantiate(it.modelPrefab, parentTailPlayer);
-    //            }
-    //            else
-    //            {
-    //                Debug.Log("Chua co cho gan tail set");
-    //            }
-    //        }
-    //    }
-    //}
-
-    //private void SetupDetailOwnerItem()
-    //{
-    //    btnSkinShopManager.SetupButtons(
-    //        chooseItem,
-    //        () => {
-    //            if(DataManager.Ins.gameSave.coin >= chooseItem.price) {
-    //                AudioManager.Ins.PlaySound_ButtonClick();
-    //                DataManager.Ins.SaveBuyItem(chooseItem.id, chooseItem.price, ItemType.Set);
-    //                DetailEquip(chooseItem);
-    //                GameObject Lock = btnChooseItem.transform.Find("Lock").gameObject;
-    //                Lock.SetActive(false);
-    //                UIControllerNormal.instance.uiMenuStart.LoadCoinOwn();
-    //            }
-    //        },
-    //        () => {
-    //            AudioManager.Ins.PlaySound_ButtonClick();
-    //            DataManager.Ins.UpdateEquip(chooseItem.id, ItemType.Set);
-    //            ActionWithItem(chooseItem);
-    //            DetailEquip(chooseItem);
-    //        },
-    //        () => {
-    //            AudioManager.Ins.PlaySound_ButtonClick();
-    //            DataManager.Ins.UpdateEquip("", ItemType.Set);
-    //            DetailEquip(chooseItem);
-    //            ResetOutfitDefault();
-    //        },
-    //        () => {
-    //            AudioManager.Ins.PlaySound_ButtonClick();
-    //            Debug.Log("Chưa xong 🥲 ! Cho Free");
-    //            DataManager.Ins.SaveBuyItem(chooseItem.id, 0, ItemType.Set);
-    //            DetailEquip(chooseItem);
-    //            GameObject Lock = btnChooseItem.transform.Find("Lock").gameObject;
-    //            Lock.SetActive(false);
-    //        }
-    //    );
-    //}
-
-    //private void ResetOutfitDefault()
-    //{
-    //    Renderer rendererSkin = skinPlayer.GetComponent<Renderer>();
-    //    Material[] skinMaterials = rendererSkin.materials;
-    //    Renderer rendererPant = pantPlayer.GetComponent<Renderer>();
-    //    Material[] pantMaterials = rendererSkin.materials;
-    //    for (int i = 0; i < skinMaterials.Length; i++)
-    //    {
-    //        skinMaterials[i] = skinStart;
-    //    }
-    //    for (int i = 0; i < pantMaterials.Length; i++)
-    //    {
-    //        pantMaterials[i] = skinStart;
-    //    }
-    //    rendererSkin.materials = skinMaterials;
-    //    rendererPant.materials = pantMaterials;
-
-    //    foreach (Transform child in parentHairPlayer1)
-    //    {
-    //        Destroy(child.gameObject);
-    //    }
-    //    foreach (Transform child in parentHairPlayer2)
-    //    {
-    //        Destroy(child.gameObject);
-    //    }
-
-    //    foreach (Transform child in parentSwingPlayer)
-    //    {
-    //        Destroy(child.gameObject);
-    //    }
-
-    //    foreach (Transform child in parentTailPlayer)
-    //    {
-    //        Destroy(child.gameObject);
-    //    }
-    //}
-
-    //private void OnEnable()
-    //{
-    //    isPlayerSet = string.IsNullOrEmpty(DataManager.Ins.gameSave.str_currentSetID);
-    //    if (!isPlayerSet)
-    //    {
-    //        chooseItem = itemDatabase.GetItemById(DataManager.Ins.gameSave.str_currentSetID);
-    //    }
-    //    ResetOutfitDefault();
-    //    GenerateShop();
-    //    StartCoroutine(SetupStartItem());
-    //}
-    //IEnumerator SetupStartItem()
-    //{
-    //    yield return null;
-    //    if (btnStart != null)
-    //    {
-    //        btnChooseItem = btnStart;
-    //        UpdateUIBtn(btnStart);
-    //    }
-
-    //    if (chooseItem != null)
-    //    {
-    //        DetailEquip(chooseItem);
-    //        SetupDetailOwnerItem();
-    //        ActionWithItem(chooseItem);
-    //    }
-    //}
-
-    //private void OnDisable()
-    //{
-    //    chooseItem = null;
-    //    btnStart = null;
-    //    btnChooseItem = null;
-    //    ResetOutfitDefault();
-    //}
     public UIShopSkin uiShopSkin;
     public GameObject obj_itemPrefab;
     public Transform trams_contentParent;
@@ -330,6 +19,7 @@ public class SetShop : MonoBehaviour
     public ItemPrefabs itemPrefabChooseItem = null;
     private ItemPrefabs itemPrefabPrevious = null;
     private ItemBase chooseItem = null;
+    public ItemPrefabs itemEquipFirst = null;
 
     public bool isInit = false;
 
@@ -367,6 +57,8 @@ public class SetShop : MonoBehaviour
             var result = list_setIns.FirstOrDefault(x => x.item == chooseItem);
             if (result.item != null) {
                 ActionWithItem(result.item, result.itemPrefabs);
+                itemEquipFirst = result.itemPrefabs;
+                itemEquipFirst.UIUpdateEquipedItem();
             }
         }
         else {
@@ -481,5 +173,16 @@ public class SetShop : MonoBehaviour
         itemPrefabPrevious = null;
         itemPrefabChooseItem = null;
         ResetSet();
+    }
+
+    public void UpdateEquipedItem() {
+        if (DataManager.Ins.gameSave.str_currentSetID == chooseItem.id) {
+            itemPrefabChooseItem.UIUpdateUnequipedItem();
+        }
+        else {
+            if (itemEquipFirst != null) itemEquipFirst.UIUpdateUnequipedItem();
+            itemEquipFirst = itemPrefabChooseItem;
+            itemEquipFirst.UIUpdateEquipedItem();
+        }
     }
 }

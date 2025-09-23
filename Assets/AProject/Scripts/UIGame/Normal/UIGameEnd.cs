@@ -31,6 +31,7 @@ public class UIGameEnd : MonoBehaviour
     public bool isInit = false;
 
     public void InitPopupRevive() {
+        Debug.Log("1");
         UIControllerNormal.instance.CloseUIInPlay();
         SetupBtnRevivePopup();
         obj_popupReviveNow.SetActive(true);
@@ -38,6 +39,7 @@ public class UIGameEnd : MonoBehaviour
     }
 
     public void InitPopupDetail() {
+        Debug.Log("2");
         UIControllerNormal.instance.CloseUIInPlay();
         SetupBtnDetailPopup();
         obj_popupDetailEndGame.SetActive(true);
@@ -56,7 +58,7 @@ public class UIGameEnd : MonoBehaviour
             AudioManager.Ins.PlaySound_ButtonClick();
             Player.instance.playerController.revivePlayer.isUnuseRevivePopup = true;
             obj_popupReviveNow.SetActive(false);
-            InitPopupDetail();
+            //InitPopupDetail();
         });
         btn_acceptRevive.onClick.AddListener(() => {
             AudioManager.Ins.PlaySound_ButtonClick();
@@ -107,7 +109,9 @@ public class UIGameEnd : MonoBehaviour
             img_lockNextMap.sprite = sprite_unlockMap;
         }
         else {
-            size.x += (550f - 260f) / SpawnManager.Instance.int_totalEnemiesToSpawn * (SpawnManager.Instance.int_totalEnemiesToSpawn - (SpawnManager.Instance.getAmountEnemyRemaining() + 1));
+            Debug.Log(size.x);
+            size.x += (550f - 260f) / SpawnManager.Instance.int_totalEnemiesToSpawn * (SpawnManager.Instance.int_totalEnemiesToSpawn - Player.instance.playerController.rank + 1);
+            Debug.Log(size.x);
             img_lockNextMap.sprite = sprite_lockMap;
         }
         rectTrans_processPlayMap.sizeDelta = size;
@@ -119,7 +123,6 @@ public class UIGameEnd : MonoBehaviour
         while (!reviveNowScript.TimeShowEnd()) { yield return null; }
         Player.instance.playerController.revivePlayer.isUnuseRevivePopup = true;
         obj_popupReviveNow.SetActive(false);
-        InitPopupDetail();
     }
 
     public void ReceiceCoin(bool x3 = false) {
