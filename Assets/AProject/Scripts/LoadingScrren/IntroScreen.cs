@@ -30,7 +30,7 @@ public class IntroScreen : MonoBehaviour
 
     private IEnumerator LoadNextSceneAfterDelay() {
         yield return new WaitForSeconds(flt_waitTime);
-        ADSManager.instance.applovinMaxManager.ShowInterstitial();
+        //ADSManager.instance.applovinMaxManager.ShowInterstitial();
         GameManager.instance.LoadScene("MainScene");
     }
 }

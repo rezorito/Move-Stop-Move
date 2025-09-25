@@ -5,7 +5,7 @@ using UnityEngine;
 public class ADSManager : MonoBehaviour
 {
     public static ADSManager instance;
-    public ApplovinMaxManager applovinMaxManager;
+    //public ApplovinMaxManager applovinMaxManager;
 
     private void Awake() {
         if(instance == null) {
